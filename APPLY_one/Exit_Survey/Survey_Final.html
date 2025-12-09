@@ -1,0 +1,195 @@
+{{ block title }}
+{{ endblock }}
+
+{{ block content }}
+<link rel="stylesheet" href="{{static 'css/css.css'}}">
+<link rel="stylesheet" href="{{static 'css/modal.css'}}">
+<link rel="stylesheet" href="{{static 'css/mgslider.css'}}">
+<script type="text/javascript" src="{{ static 'js/Script_modal.js' }}"></script>
+<script type="text/javascript" src="{{ static 'js/data_quality.js' }}"></script>
+<script type="text/javascript" src="{{ static 'js/mgslider.js' }}"></script>
+
+<style>
+input[name="Belief_Round2"] {
+  width: 100px;
+  box-sizing: border-box;
+}
+
+ .likert-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    text-align: center;
+  }
+  .likert-table th, .likert-table td {
+    width: 20%;
+  }
+
+.hidden {
+  display: none !important;
+}
+
+  .highlighted-box {
+  background-color: white;
+  border: 2px solid #ccc; /* light grey border */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+      font-weight: 400;
+}
+
+  .rounded-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px; /* rounded corners for whole table */
+  border: 1px solid #ccc; /* optional border for the table */
+  overflow: hidden; /* to ensure border radius clips inner borders if any */
+}
+
+  table, th, td {
+  border: 1px solid #999; /* thinner border with lighter grey */
+  text-align: center;     /* center all table cell contents */
+  vertical-align: middle; /* vertically center contents */
+  padding: 8px;           /* maintain padding */
+}
+
+  table {
+  border-collapse: collapse; /* ensure single border lines */
+}
+
+/* Round corners of the four outer cells separately */
+.rounded-table th:first-child {
+  border-top-left-radius: 10px;
+}
+.rounded-table th:last-child {
+  border-top-right-radius: 10px;
+}
+.rounded-table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.rounded-table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+</style>
+
+<div class="content-box box-info">
+
+  <!-- Header -->
+  <div class="section-header text-center">
+    <!-- Make titles dynamic basedon percentage? -->
+    <h3>Survey</h3>
+    <hr class="section-divider">
+  </div>
+
+
+<form>
+          <div class="section-box-nonhover box-white">
+    <div class="section-header ">
+  <!-- Slider Inputs -->
+    <center>Please answer the following questions honestly.</center>
+            </div>
+  </div>
+
+      <div class="section-box-nonhover box-white">
+    <div class="section-header ">
+      <p>
+
+        What is the highest level of education that you have achieved/are studying for?
+        </p>
+        {{ form.Education }}
+
+    </div>
+  </div>
+
+   <div class="section-box-nonhover box-white">
+    <div class="section-header ">
+      <p>
+
+        How do you see yourself: are you generally a person who is fully prepared to take risks or do you try to avoid taking risks?<br>
+        <em>Please select a number on the scale below.</em>
+
+      </p>
+
+      <table class="rounded-table" style="width:100%; border-collapse: collapse; border-spacing: 0;">
+      <tr style="background-color:#e3f2fd;">
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">0</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">1</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">2</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">3</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">4</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">5</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">6</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">7</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">8</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">9</th>
+        <th style="border: 1px solid black; padding: 8px; width: 9%;">10</th>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="0" id="Risk0">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="1" id="Risk1">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="2" id="Risk2">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="3" id="Risk3">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="4" id="Risk4">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="5" id="Risk5">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="6" id="Risk6">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="7" id="Risk7">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="8" id="Risk8">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="9" id="Risk9">
+        </td>
+        <td style="border: 1px solid black; padding: 8px;">
+            <input type="radio" name="Risk" value="10" id="Risk10">
+        </td>
+    </tr>
+
+</table>
+        <table class="likert-table" style="width:100%; border-collapse: collapse; border:none; table-layout: fixed;">
+    <tr style="background-color:white; border: none;">
+        <th style="padding: 8px; width: 50%; text-align: left; font-size: small; font-style: italic; border: none;">(Not at all willing to take risks)</th>
+        <th style="padding: 8px; width: 50%; text-align: right; font-size: small; font-style: italic; border: none;">(Very willing to take risks)</th>
+    </tr>
+</table>
+    </div>
+  </div>
+
+    <div class="section-box-nonhover box-white">
+    <div class="section-header ">
+      <p>
+
+       <center>When you are ready, click on next to be redirected back to Prolific.<br>
+    On the 17th December, we will draw 6 participants who complete the survey to receive a bonus of £50.</center>
+
+    </div>
+  </div>
+
+<!-- Buttons -->
+<div class="buttons-container">
+
+
+
+  <button id="NextButton" class="otree-btn-next btn btn-primary">Next</button>
+  </form>
+</div>
+</div>
+
+
+{{ endblock }}

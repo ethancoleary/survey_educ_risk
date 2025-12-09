@@ -1,0 +1,125 @@
+
+<div class="content-box box-info">
+
+  <!-- Header -->
+  <div class="section-header text-center">
+    <h3>🤺 Round 2</h3>
+    <hr class="section-divider">
+  </div>
+
+  <!-- Intro & Timer -->
+  <div class="section-box-nonhover box-white">
+    <div class="section-header">
+      <p>
+        You will soon begin Round 2.
+       You will have <strong>2 minutes</strong> to find as many matching pairs as possible.
+      </p>
+      </div>
+  </div>
+  <div class="section-box-nonhover box-info">
+    <table style="width:100%; border-collapse: collapse;">
+      <tr>
+        <td style="width:80%; padding-right: 15px; vertical-align: middle;">
+      <p>
+        <h4>Your Group</h4>
+        This round and all subsequent rounds, you will be <strong>matched with 3 other participants</strong>
+        to form a group. Your group consists of two female and two male Prolific users, including you, as is shown to the right.
+      </p>
+        </td>
+        {{ if player.participant.Treatment == 1 or player.participant.Treatment == 9 }}
+      <td style="width:10%; text-align: center; vertical-align: middle;">
+          (You)<br>
+      <img src="{{ static 'graphics/neutral_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+        <br>
+        <img src="{{ static 'graphics/neutral_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+      </td>
+        <td style="width:10%; text-align: center; vertical-align: middle;">
+            <br>
+      <img src="{{ static 'graphics/neutral_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+          <br>
+          <img src="{{ static 'graphics/neutral_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+      </td>
+        {{ else }}
+        {{ if player.participant.Gender == "Male" }}
+        <td style="width:10%; text-align: center; vertical-align: middle;">
+            (You)<br>
+      <img src="{{ static 'graphics/male_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+        <br>
+        <img src="{{ static 'graphics/fem_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+      </td>
+        <td style="width:10%; text-align: center; vertical-align: middle;">
+            <br>
+      <img src="{{ static 'graphics/fem_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+          <br>
+          <img src="{{ static 'graphics/male_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+      </td>
+        {{ else }}
+        <td style="width:10%; text-align: center; vertical-align: middle;">
+            (You)<br>
+      <img src="{{ static 'graphics/fem_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+        <br>
+        <img src="{{ static 'graphics/male_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+      </td>
+        <td style="width:10%; text-align: center; vertical-align: middle;">
+            <br>
+      <img src="{{ static 'graphics/male_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+          <br>
+          <img src="{{ static 'graphics/fem_avatar.png' }}" style="max-width:100%;" alt="Example of easy level card" />
+      </td>
+        {{ endif }}
+        {{ endif }}
+      </tr>
+    </table>
+    </div>
+
+      <!--<center>
+        <img src="{{ static 'graphics/Your_group_neutral.png' }}" height="250px"><br>
+      </center>-->
+  <div class="section-box-nonhover box-white">
+      <p>
+        <h4>Mixes</h4>
+        For this round, the computer will randomly allocate each participant independently to either Mix 1 or Mix 2.
+          You will have to find matching pairs in sets drawn from <strong>your allocated Mix</strong> in this round.
+<br><br>
+       <!-- you will have to find matching pairs in sets which are drawn from one of two mixes.-->
+        <ol>
+          Sets in <strong>Mix 1</strong> contain 6 easy and 2 hard matching pairs.
+        </ol>
+        <ol>
+          Sets in <strong>Mix 2</strong> contain 2 easy and 6 hard matching pairs.
+        </ol>
+       <!-- <p style="text-align: center;"><strong>In round 2, you will face sets either only from Mix 1 or only from Mix 2.</strong></p>
+      </p>
+      <p>
+        The computer will conduct the equivalent of a coin flip for each participant in your group to determine whether
+        they face sets from <strong>Mix 1</strong> or <strong>Mix 2</strong>. You will only find out your mix by turning cards.
+      </p>-->
+<p>
+        A visual example of these mixes is displayed below. The exact placement of cards may not represent the true
+        positioning of the cards in the round.</p>
+        <div class="content-box box-white" style="max-width: 600px">
+    <center>
+        <img src="{{ static 'graphics/Mixes.png' }}" style="max-width:100%; height: 300px;" alt="round 1" />
+    </center>
+    </div>
+    </div>
+
+
+  <!-- Payment Rule Change -->
+  <div class="section-box box-warn">
+    <div class="section-header">
+      <h4>💰 Payment rule for round 2</h4>
+
+        If this round is randomly chosen for your bonus, your payment will depend on both <strong>your score</strong>
+      and the scores of others in  <strong>your group</strong>.
+
+      <ul>
+        <li>You will earn £{{ tournament_rate1 }} per point you score (i.e. matching pair you find)
+          <strong>if you have the highest score in the group</strong>.</li><!--make this dynamic-->
+        <li>You will earn £0.00 for this round otherwise</li>
+        <li>If there is a tie, the winner will be chosen randomly.</li>
+      </ul>
+      You will not be informed of your ranking until the end of the study.<br><br>
+      <p style="text-align:center;"><em >Please do not use calculators or AI tools during this study.</em></p>
+    </div>
+  </div>

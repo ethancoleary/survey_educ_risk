@@ -1,0 +1,261 @@
+<div class="content-box box-info">
+
+  <!-- Header -->
+  <div class="section-header text-center">
+    <h3>🤺 🧍Round 3</h3>
+    <hr class="section-divider">
+  </div>
+
+  <!--adjust them to accomodate Recruiter presence as well if treatment is as such.-->
+
+  <!-- Intro -->
+  <div class="section-box box-white">
+        <div class="section-header"
+            <p>You will soon begin Round 3. In this round, you will have <strong>2 minutes</strong> to find as many matching pairs as possible.</p>
+      <p><strong>Difficulty level:</strong><br>
+                All participants in this round face sets containing only <strong>hard cards</strong>.
+            </p>
+        <p>
+            <strong>In this round, you choose your own payment rule</strong>.
+        Before choosing a payment rule, please read the following instructions. You need to pass a quiz on the 
+      information in order to proceed.</p>
+        </div>
+  </div>
+
+{% if not show_recruiter %}
+  <!-- Treatments 1,2,9,10 (and also 6,7,14,15 in manager-only mode) -->
+  <div class="section-box box-info">
+    <div class="section-header">
+      <p>
+        There is another participant called <strong>the Manager</strong> who has also been recruited on Prolific.
+        The Manager is a participant who is not part of your group.
+          You can see this participant's avatar and read about their decision and incentive below.
+      </p>
+    </div>
+    <div style="width: 60%; margin: 0 auto;">
+    <div class="section-box box-white">
+    <div class="task-example text-center mb-4">
+      <img src="{% static manager_avatar %}" style="max-width:75%; height: 200px;" alt="Manager avatar" />
+    </div><p>
+        <strong>The Manager</strong> selects one participant in your group and earns
+        £{{ manager_bonus }} if they select the participant who scores highest in Round 3.
+        </p>
+        <p>Therefore, the Manager is motivated to select the participant that they
+        <em>believe</em> will perform best in <strong>hard sets</strong>.
+      </p>
+  </div>
+      </div>
+
+
+
+
+
+      <p>The Manager is familiar with the task.
+    When they make their selection, they observe the <em>avatars</em> and <em>Round 2 scores</em> of all participants in your group.
+      </p>
+    <p>
+    <strong>Importantly</strong>, they do not know which Mix each participant faced.
+    In other words, they do not know if a participant obtained their score from an easy or hard round.
+    </p>
+    <p>Below is an example of what the Manager sees when making the selection. The exact order of participants is randomised. </p>
+    <div style="width: 80%; margin: 0 auto;">
+<div class="section-box box-white" style="padding: 0.5rem 1rem;">
+    <table class="centered-table">
+  <tr>
+    <td class="side-column"></td>
+      <td colspan="4" style="text-align:center; text-decoration: underline; font-weight: bold;">
+      Group 1
+    </td>
+    </tr>
+        <tr>
+    <td class="side-column"></td>
+    <td>
+{% if player.participant.Treatment == 1 or player.participant.Treatment == 9 %}
+      <img src="{% static 'graphics/neutral_avatar.png' %}" alt="Avatar">
+
+      {% else %}
+      <img src="{% static 'graphics/fem_avatar.png' %}" alt="Avatar">
+      {% endif %}
+    </td>
+    <td>
+      {% if player.participant.Treatment == 1 or player.participant.Treatment == 9 %}
+      <img src="{% static 'graphics/neutral_avatar.png' %}" alt="Avatar">
+
+      {% else %}
+      <img src="{% static 'graphics/male_avatar.png' %}" alt="Avatar">
+      {% endif %}
+
+    </td>
+    <td>
+
+      {% if player.participant.Treatment == 1 or player.participant.Treatment == 9 %}
+      <img src="{% static 'graphics/neutral_avatar.png' %}" alt="Avatar">
+
+      {% else %}
+      <img src="{% static 'graphics/male_avatar.png' %}" alt="Avatar">
+      {% endif %}
+    </td>
+    <td>
+
+      {% if player.participant.Treatment == 1 or player.participant.Treatment == 9 %}
+      <img src="{% static 'graphics/neutral_avatar.png' %}" alt="Avatar">
+
+      {% else %}
+      <img src="{% static 'graphics/fem_avatar.png' %}" alt="Avatar">
+      {% endif %}
+    </td>
+
+  </tr>
+  <tr>
+    <td class="side-column">Round 2 score:</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+
+  </tr>
+  <tr>
+    <td class="side-column"></td>
+    <td><button type="button" class="select-button" data-val="1">Select this <br> worker</button></td>
+    <td><button type="button" class="select-button" data-val="2">Select this <br> worker</button></td>
+    <td><button type="button" class="select-button" data-val="3">Select this <br> worker</button></td>
+    <td><button type="button" class="select-button" data-val="4">Select this <br> worker</button></td>
+
+  </tr>
+</table>
+</div>
+    </div>
+    </div>
+
+
+{% else %}
+  <!-- Treatments 4 and 12: Manager + Recruiter -->
+  <div class="section-box box-info">
+    <div class="section-header">
+      <p>
+        There are two other participants: a <strong>Manager</strong> and a
+        <strong>Recruiter</strong>, who have also been recruited from Prolific.
+        Neither participant is a member of your group and they cannot communicate with each other.
+          You can see these participants' avatars and read about their decisions and incentives below.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6" style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <!-- Manager column -->
+      <div class="section-box box-white" style="padding: 0.5rem 1rem;">
+        <div class="task-example text-center mb-2">
+          <img src="{% static manager_avatar %}" style="max-width:75%; height: 160px;" alt="Manager avatar" />
+        </div>
+        <p>
+          <font color="#808080"><strong>The Manager</strong> selects one participant in your group and earns
+        £{{ manager_bonus }} if they select the participant who scores highest in Round 3.
+          </p>
+        <p>
+          Therefore, the Manager is motivated to select the participant that they
+          <em>believe</em> will perform best in <strong>hard sets</strong>.</font>
+        </p>
+
+      </div>
+
+      <!-- Recruiter column -->
+      <div class="section-box box-white" style="padding: 0.5rem 1rem;">
+        <div class="task-example text-center mb-2">
+          <img src="{% static recruiter_avatar %}" style="max-width:75%; height: 160px;" alt="Recruiter avatar" />
+        </div>
+        <p>
+          <strong>The Recruiter</strong> also selects one participant in your group. They earn
+          <strong>£{{ recruiter_match_bonus }}</strong> if their selection is the same as the Manager’s.
+          </p>
+        <p>
+          Therefore, the Recruiter is motivated to select the participant <strong>they believe the Manager will select</strong>.<br><br>
+          <strong>The Recruiter has no information about the Manager other than their avatar.</strong>
+        </p>
+      </div>
+    </div>
+
+    <p>The Manager and the Recruiter are familiar with the task.
+    When they make their selection, they observe the <em>avatars</em> and <em>Round 2 scores</em> of all participants in your group.
+      </p>
+    <p>
+    <strong>Importantly</strong>, they do not know which Mix each participant faced.
+     In other words, they do not know if a participant obtained their score from an easy or hard round.
+    </p>
+    <p>Below is an example of what the Manager and Recruiter see when making their selection. The exact order of participants is randomised. </p>
+    <div style="width: 80%; margin: 0 auto;">
+<div class="section-box box-white" style="padding: 0.5rem 1rem;">
+    <table class="centered-table">
+  <tr>
+    <td class="side-column"></td>
+      <td colspan="4" style="text-align:center; text-decoration: underline; font-weight: bold;">
+      Group 1
+    </td>
+    </tr>
+        <tr>
+    <td class="side-column"></td>
+    <td>
+
+      <img src="{% static 'graphics/fem_avatar.png' %}" alt="Avatar">
+    </td>
+    <td>
+      <img src="{% static 'graphics/male_avatar.png' %}" alt="Avatar">
+
+    </td>
+    <td>
+
+      <img src="{% static 'graphics/male_avatar.png' %}" alt="Avatar">
+    </td>
+    <td>
+
+      <img src="{% static 'graphics/fem_avatar.png' %}" alt="Avatar">
+    </td>
+
+  </tr>
+  <tr>
+    <td class="side-column">Round 2 score:</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+    <td>*</td>
+
+  </tr>
+  <tr>
+    <td class="side-column"></td>
+    <td><button type="button" class="select-button" data-val="1">Select this <br> worker</button></td>
+    <td><button type="button" class="select-button" data-val="2">Select this <br> worker</button></td>
+    <td><button type="button" class="select-button" data-val="3">Select this <br> worker</button></td>
+    <td><button type="button" class="select-button" data-val="4">Select this <br> worker</button></td>
+
+  </tr>
+</table>
+</div>
+      </div>
+
+  </div>
+{% endif %}
+
+
+ <div class="section-box box-warn">
+  <div class="section-header">
+    <p><strong>💰 Your Payment Rule for Round 3</strong><br>
+      <ul>
+      <strong>Payment Rule A:</strong>
+      {{ if a_is_piece }}
+        You will earn £{{ piece_rate }} per point (i.e. matching pair).
+      {{ else }}
+        You will earn £{{ tournament_rate1 }} per point (i.e. matching pair)
+        <strong>if the {{ selector_role }} selects you</strong>. You will earn £0.00 if the {{ selector_role }} does not select you.
+      {{ endif }}
+    </ul>
+
+    <ul>
+      <strong>Payment Rule B:</strong>
+      {{ if b_is_piece }}
+        You will earn £{{ piece_rate }} per point (i.e. matching pair).
+      {{ else }}
+        You will earn £{{ tournament_rate1 }} per point (i.e. matching pair)
+        <strong>if the {{ selector_role }} selects you</strong>. You will earn £0.00 if the {{ selector_role }} does not select you.
+      {{ endif }}
+    </ul>
+    </p>
+  </div>
+</div>
